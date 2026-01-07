@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block body %}
+
+
+<!-- Page Header -->
+<section class="bg-dark text-light text-center py-4">
+    <div class="container">
+        <h1 class="fw-bold">Registered Participants</h1>
+        <p class="lead">List of students registered for sports activities</p>
+    </div>
+</section>
+
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Sno</th>
+                <th scope="col">Name</th>
+                <th scope="col">Class</th>
+                <th scope="col">Section</th>
+                <th scope="col">College_ID</th>
+                <th scope="col">City</th>
+                <th scope="col">Sport</th>
+            </tr>
+        </thead>
+        <tbody>
+              {% for sport in allsports %}
+            <tr>
+                <th scope="row">{{loop.index}}</th>
+                <td>{{sport.Name}}</td>
+                <td>{{sport.Class}}</td>
+                <td>{{sport.Section}}</td>
+                <td>{{sport.College_Id}}</td>
+                <td>{{sport.City}}</td>
+                <td>{{sport.Sport}}</td>  
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+{% endblock body %}

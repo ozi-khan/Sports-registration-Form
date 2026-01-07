@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block body %}
+
+  <section class="bg-dark text-light text-center py-4">
+    <div class="container">
+      <h1 class="fw-bold">Register</h1>
+      <form action="/participants" method="POST">
+        <form class="row g-3">
+          <div class="col-md-6">
+            <label for="name" class="form-label">Name</label>
+            <input type="name" class="form-control" name="name" id="name" placeholder="Name">
+          </div>
+          <div class="col-md-6">
+            <label aria-autocomplete="list" class="form-label">Class</label>
+            <input type="number" class="form-control" name="class" id="class" placeholder="Class">
+          </div>
+          <div class="col-md-4">
+            <label for="section" class="form-label">Section</label>
+            <select id="section" name="Section" class="form-select">
+              <option selected disabled>Section</option>
+              <option value="A">Section A</option>
+              <option value="B">Section B</option>
+              <option value="C">Section C
+
+            </select>
+          </div>
+          <div class="col-12">
+            <label for="ID" class="form-label">College ID</label>
+            <input type="text" class="form-control" name="id" id="ID" placeholder="ID">
+          </div>
+          <div class="col-md-6">
+            <label for="city" class="form-label">City
+              <input type="text" class="form-control" name="city" id="city" placeholder="City">
+          </div>
+          <div class="col-md-4">
+            <label for="sports" class="form-label">Sports</label>
+            <select id="sports" name="sports" class="form-select">
+              <option selected disabled>Choose a Sport</option>
+              <option value="Cricket">Cricket</option>
+              <option value="Football">Football</option>
+              <option value="Basketball">Basketball</option>
+              <option value="Volleyball">Volleyball</option>
+              <option value="Badminton">Badminton</option>
+              <option value="Hockey">Hockey</option>
+            </select>
+          </div>
+
+
+    </div>
+</div>
+<div class="col-12">
+  <button type="submit" class="btn btn-outline-primary my-3">Submit</button>
+</div>
+</form>
+
+
+
+{% endblock body %}
