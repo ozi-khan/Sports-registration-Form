@@ -1,9 +1,16 @@
-from flask import Flask,render_template,request,redirect
+from flask import Flask,render_template,request,redirect,session
 from flask_sqlalchemy  import SQLAlchemy
+from flask_session import Session
+
 
 app=Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///sports.db"
 db=SQLAlchemy(app)
+app.config['SESSION_TYPE'] = 'filesystem'
+app.config["SESSION_PERMANENET"]=False
+Session(app)
+app.secret_key="secret-key"
+
 
 class Sports(db.Model):
     Sno=db.Column(db.Integer, primary_key=True)
@@ -17,9 +24,21 @@ class Sports(db.Model):
 with app.app_context():
     db.create_all()
 
-@app.route("/")
-def index():
-    return render_template("home.html")
+@app.route("/",methods=["GET","POST"]) 
+def login():
+    if request.method=="POST":
+        name=request.form.get("name")
+        session["name"]=name
+        return redirect("/home")
+    return render_template("login.html")
+@app.route("/logout")
+def logout():
+    if request.method=="POST":
+        session.clear()
+        return redirect("/")
+    return render_template("logout.html")
+
+
 @app.route("/home")
 def home():
     return render_template("home.html")
